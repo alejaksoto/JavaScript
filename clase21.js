@@ -1,10 +1,10 @@
 function persona(nombre, apellido, altura) {
-  this.nombre = nombre,
+  this.nombre = nombre
   this.apellido = apellido
   this.altura = altura
 }
 
-persona.prototype.saludar = () => () {
+persona.prototype.saludar = function () {
   console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`);
 }
 
