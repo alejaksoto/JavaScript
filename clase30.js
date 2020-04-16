@@ -1,14 +1,15 @@
-const API_URL = 'https://swapi.co/api/';
-const PEOPLE_URL = 'people/:id';
+const API_URL = 'https://swapi.co/api/'
+const PEOPLE_URL = 'people/:id'
 const opts = {crossDomain: true};
 
-conts onPeopleResponse = funtion (persona) {
-    console.log(`hola soy, ${persona.name}`)
-};
-
-funtion obtenerPersonaje (id) {
+conts obtenerPersonaje (id, callback) {
     const url = `${API_URL}${PEOPLE_URL.replace (':id', id)}`
-    $.get(url, opts, onPeopleResponse)
+
+
+$.get(url, opts, funtion (persona) {
+    console.log(`hola...yo soy ${persona.name}`)
+}
+)
 };
 
 obtenerPersonaje(2)
