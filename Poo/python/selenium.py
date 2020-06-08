@@ -1,20 +1,25 @@
+import unittest
+from pyunitreport import HTMLTestRunner
 from selenium import webdriver
-from time import sleep
 
-class UsingUnnittest(unittest.Testcase):
+class HelloWorld(unittest.TestCase):
 
-    def setUp(self):
-        self.driver = webdriver.chromedriver(executable_path = '.\Users\user\Documents\GitHub\JavaScript\Poo\python\chromedriver')
+    @classmethod
+    def setUpClass(cls):
+        cls.driver = webdriver.Chrome(executable_path = r'./chromedriver')
+        driver = cls.driver
+        driver.implicitly_wait(10)
+
+    def test_hello_world(self):
         driver = self.driver
-        
-    def test_get_ptyhon_website(self):
-        driver = self.driver
-        driver.get("https://www.python.org")
-        
-    def tearDown(self):
-        print('Browser is about to close...')
-        sleep(3)
-        self.driver.close()
-  
-if __name__ == '__main__':
-  unittest.main(verbosity = 2)
+        driver.get('https://www.platzi.com')
+
+    def test_visit_wikipedia(self):
+        self.driver.get('https://www.wikipedia.org')
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+
+if __name__ == "__main__":
+    unittest.main(verbosity = 2, testRunner = HTMLTestRunner(output = 'reportes', report_name = 'hello-world-report'))
