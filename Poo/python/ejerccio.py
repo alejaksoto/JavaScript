@@ -1,0 +1,5 @@
+cadena = str(input('introduce texto '))
+dos = str(input('introduce texto '))
+art = int(len(cadena))
+tre = int(len(dos))
+print((cadena[0]==dos[0]) or (cadena[art-1])==(dos[tre-1]))
